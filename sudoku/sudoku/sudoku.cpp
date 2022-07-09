@@ -36,7 +36,7 @@ Sudoku::~Sudoku()
 	this->name.erase(this->name.size() - 4, this->name.size() - 1);
 	this->name += "Solution.txt";
 
-	std::ofstream file(name);
+	std::ofstream file(this->name);
 	if (!file) {
 		std::cout << "error::creation_outfile\n";
 		return;
@@ -46,7 +46,7 @@ Sudoku::~Sudoku()
 	{
 		for (int j = 0; j < 9; j++)
 		{
-			file << map[i][j].data << " ";
+			file << this->map[i][j].data << " ";
 		}
 		file << "\n";
 	}
