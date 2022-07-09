@@ -32,7 +32,7 @@ Sudoku::~Sudoku()
 	name += "Solution.txt";
 
 	std::ofstream file(name);
-	if (!file) {
+	if (!file || !this->created) {
 		std::cout << "error::creation_outfile\n";
 		return;
 	}
