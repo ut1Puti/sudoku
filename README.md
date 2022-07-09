@@ -1,0 +1,2 @@
+# sudoku
+single solutiuon sudoku
