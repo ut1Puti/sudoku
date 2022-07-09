@@ -12,13 +12,13 @@ public:
 	void display();
 	void solution();
 private:
-	Ceil map[9][9];
-	bool created = true;
-	bool used = false;
-	std::stack<std::list<std::pair<int, int>>> history;
 	std::string name;
 
-	void analyzeCeil(int i, int j);
+	Ceil map[9][9];
+	bool created = true;
+	std::stack<std::list<std::pair<int, int>>> history;
+
+	void analyzeCeil(int i, int j, bool& used);
 	std::pair<int, int> searchMinEntropy(bool& error);
 	void rollback();
 };

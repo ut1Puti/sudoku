@@ -24,6 +24,8 @@ Sudoku::Sudoku(std::string name)
 				this->map[i][j] = Ceil(data);
 		}
 	}
+
+	file.close();
 }
 
 Sudoku::~Sudoku()
@@ -48,6 +50,8 @@ Sudoku::~Sudoku()
 		}
 		file << "\n";
 	}
+
+	file.close();
 }
 
 void Sudoku::display()
@@ -80,13 +84,13 @@ void Sudoku::solution()
 	{
 		this->history.push(std::list<std::pair<int, int>>());
 		bool error = true;
-		this->used = false;
+		bool used = false;
 
 		for (int i = 0; i < 9; i++)
 			for (int j = 0; j < 9; j++)
-				analyzeCeil(i, j);
+				analyzeCeil(i, j, used);
 
-		if (!this->used)
+		if (!used)
 			return;
 
 		std::pair<int, int> solution = searchMinEntropy(error);
@@ -101,12 +105,12 @@ void Sudoku::solution()
 	}
 }
 
-void Sudoku::analyzeCeil(int i, int j)
+void Sudoku::analyzeCeil(int i, int j, bool& used)
 {
 	if (this->map[i][j].data != 0)
 		return;
 
-	this->used = true;
+	used = true;
 
 	//analyze row
 	for (int n = 0; n < 9; n++)
