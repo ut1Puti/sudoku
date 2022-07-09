@@ -28,11 +28,14 @@ Sudoku::Sudoku(std::string name)
 
 Sudoku::~Sudoku()
 {
+	if (!this->created)
+		return;
+
 	name.erase(name.size() - 4, name.size() - 1);
 	name += "Solution.txt";
 
 	std::ofstream file(name);
-	if (!file || !this->created) {
+	if (!file) {
 		std::cout << "error::creation_outfile\n";
 		return;
 	}
