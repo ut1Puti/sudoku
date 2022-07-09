@@ -33,8 +33,8 @@ Sudoku::~Sudoku()
 	if (!this->created)
 		return;
 
-	name.erase(name.size() - 4, name.size() - 1);
-	name += "Solution.txt";
+	this->name.erase(this->name.size() - 4, this->name.size() - 1);
+	this->name += "Solution.txt";
 
 	std::ofstream file(name);
 	if (!file) {
