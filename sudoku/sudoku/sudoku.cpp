@@ -2,6 +2,8 @@
 
 Sudoku::Sudoku(std::string name)
 {
+	this->name = name;
+
 	std::ifstream file(name);
 	if (!file)
 	{
@@ -9,8 +11,6 @@ Sudoku::Sudoku(std::string name)
 		this->created = false;
 		return;
 	}
-
-	this->name = name;
 
 	for (int i = 0; i < 9; i++)
 	{
@@ -191,7 +191,7 @@ void Sudoku::rollback()
 	this->history.pop();
 
 	//returning to end of iteration with more than one choice
-	while (map[this->history.top().back().first][this->history.top().back().second].solutionsSize() == 0)
+	while (this->map[this->history.top().back().first][this->history.top().back().second].solutionsSize() == 0)
 	{
 		while (!this->history.top().empty())
 		{
